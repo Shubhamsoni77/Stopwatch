@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .main{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color:  rgb(221,107,15);
+        background: linear-gradient(90deg, rgba(221,107,15,1) 19%, rgba(195,12,67,1) 50%, rgba(255,0,62,1) 73%);;
+        color: white;
+    }
+    .box{
+        width: 500px;
+        height: 300px;
+        /* text-align: center; */
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(99, 25, 25);
+        border-radius: 50px;
+    }
+    h1{
+        /* margin-top: 0px; */
+        margin-bottom: 40px;
+        font-size: 40px;
+    }
+    .buttons{
+        width: 400px;
+        height: 50px;
+        /* background-color: darkkhaki; */
+    }
+    button{
+        width: 130px;
+        height: 50px;
+        border-radius: 30px;
+        border: none;
+        color: white;
+    }
+    .buttons button:nth-child(1){
+        background-color: rgb(4, 126, 4);
+    }
+    .buttons button:nth-child(2){
+        background-color: rgb(215, 9, 9);
+    }
+    .buttons button:nth-child(3){
+        background-color: rgb(19, 19, 133);
+    }
+
+</style>
+<body>
+    <div class="main">
+
+        <div class="box">
+            <h1>Stopwatch</h1>
+            <h1 id="time">0</h1>
+
+            <div class="buttons">
+                <button id="start" onclick="increase()">Start</button>
+
+                <button id="stop" onclick="stoped()">Stop</button>
+
+                <button id="reset" onclick="resets()">Reset</button>
+            </div>
+        </div>
+
+
+    </div>
+    <script>
+        let start = document.querySelector('#start')
+        let stop = document.querySelector('#stop')
+        let reset = document.querySelector('#reset')
+        // console.log(stop)
+        let value = document.getElementById('time')
+
+        let time = 0
+        let interval
+        function increase(){
+          interval =  setInterval(()=>{
+                time = time + 1
+            value.innerText = time
+            // console.log(time)
+            },400)
+        }
+
+        function stoped(){
+            clearInterval(interval);
+        }
+
+        function resets(){
+            stoped()
+            time = 0
+           value.innerText = time
+        }
+    </script>
+</body>
+</html>
